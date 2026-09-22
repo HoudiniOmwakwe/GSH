@@ -43,8 +43,8 @@ class ReviewObserver
             return;
         }
 
-        $casino->update([
+        $casino->forceFill([
             'rating_avg' => $casino->reviews()->where('status', 'published')->avg('rating_overall') ?? 0,
-        ]);
+        ])->save();
     }
 }

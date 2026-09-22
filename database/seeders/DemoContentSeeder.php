@@ -29,9 +29,9 @@ class DemoContentSeeder extends Seeder
                     ->count(random_int(1, 3))
                     ->create(['casino_id' => $casino->id]);
 
-                $casino->update([
+                $casino->forceFill([
                     'rating_avg' => $casino->reviews()->where('status', 'published')->avg('rating_overall') ?? 0,
-                ]);
+                ])->save();
             });
 
         ContactMessage::factory()->count(6)->create();
