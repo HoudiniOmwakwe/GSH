@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(RolesAndPermissionsSeeder::class);
+        $this->call(PaymentMethodSeeder::class);
 
         $admin = User::factory()->create([
             'name' => 'Houdini Omwakwe',
@@ -24,5 +25,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $admin->assignRole('Super Admin');
+
+        $this->call(DemoContentSeeder::class);
     }
 }
