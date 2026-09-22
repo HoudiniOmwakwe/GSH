@@ -39,6 +39,10 @@ class ContactMessagesTable
                     ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')
+            ->emptyState(fn () => view('filament.empty-states.no-records', [
+                'heading' => 'No messages yet',
+                'description' => 'Submissions from the site\'s contact form will land here.',
+            ]))
             ->filters([
                 SelectFilter::make('status')
                     ->options([

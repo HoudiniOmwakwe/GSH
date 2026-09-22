@@ -58,6 +58,10 @@ class CasinosTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->defaultSort('ordering')
+            ->emptyState(fn () => view('filament.empty-states.no-records', [
+                'heading' => 'No casinos yet',
+                'description' => 'Add your first casino to start building reviews and comparisons.',
+            ]))
             ->filters([
                 SelectFilter::make('type')
                     ->options([

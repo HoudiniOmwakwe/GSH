@@ -53,6 +53,10 @@ class ReviewsTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->defaultSort('created_at', 'desc')
+            ->emptyState(fn () => view('filament.empty-states.no-records', [
+                'heading' => 'No reviews yet',
+                'description' => 'Reviews you write for a casino will appear here.',
+            ]))
             ->filters([
                 SelectFilter::make('casino_id')
                     ->label('Casino')

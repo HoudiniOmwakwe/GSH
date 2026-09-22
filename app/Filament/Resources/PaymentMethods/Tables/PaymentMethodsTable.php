@@ -29,6 +29,10 @@ class PaymentMethodsTable
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->emptyState(fn () => view('filament.empty-states.no-records', [
+                'heading' => 'No payment methods yet',
+                'description' => 'Add the payment methods casinos support so they can be attached to listings.',
+            ]))
             ->filters([
                 //
             ])
