@@ -8,7 +8,10 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class ReviewForm
 {
@@ -33,7 +36,12 @@ class ReviewForm
                             ->required()
                             ->live(onBlur: true)
                             ->maxLength(255)
-                            ->columnSpanFull(),
+                            ->columnSpanFull()
+                            ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
+                                if (blank($get('slug'))) {
+                                    $set('slug', Str::slug($state));
+                                }
+                            }),
                         TextInput::make('slug')
                             ->required()
                             ->maxLength(255)
