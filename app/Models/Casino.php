@@ -52,6 +52,16 @@ class Casino extends Model implements HasMedia
         return $this->belongsToMany(PaymentMethod::class);
     }
 
+    /**
+     * @return BelongsToMany<ComparisonTable, $this>
+     */
+    public function comparisonTables(): BelongsToMany
+    {
+        return $this->belongsToMany(ComparisonTable::class, 'comparison_table_casino')
+            ->withPivot('ordering')
+            ->orderByPivot('ordering');
+    }
+
     protected function casts(): array
     {
         return [
