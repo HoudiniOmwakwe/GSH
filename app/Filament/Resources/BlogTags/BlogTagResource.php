@@ -23,6 +23,8 @@ class BlogTagResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Content';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
     public static function form(Schema $schema): Schema
     {
         return BlogTagForm::configure($schema);

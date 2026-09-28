@@ -23,6 +23,8 @@ class BlogCategoryResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Content';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
     public static function form(Schema $schema): Schema
     {
         return BlogCategoryForm::configure($schema);
